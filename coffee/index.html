@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЖАР — обжарка и кофейня</title>
+<meta name="description" content="ЖАР — кофейня с собственной обжаркой. Эспрессо и фильтр, свежая выпечка, зерно для дома и офиса. Демо-сайт.">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0c0b0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Golos+Text:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0b0a;--bg-2:#151312;--bg-3:#1e1b19;--line:#2c2825;--tx:#f3eee7;--mute:#9c948a;--hot:#ff3b1f;--hot-2:#ff6a4d;--cream:#e9dcc6;
+  --d:Unbounded,system-ui,sans-serif;--b:"Golos Text",system-ui,sans-serif;--m:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.55 var(--b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;font-family:var(--d);text-transform:uppercase;letter-spacing:-.035em;line-height:.98}
+h2{font-size:clamp(34px,6vw,84px);font-weight:800}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+.kick{font:500 12.5px var(--m);letter-spacing:.06em;text-transform:uppercase;color:var(--mute);display:flex;gap:10px;align-items:center;margin-bottom:18px}
+.kick i{width:8px;height:8px;background:var(--hot);border-radius:50%;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border:1.5px solid transparent;background:var(--hot);color:#fff;font:600 16px var(--b);text-decoration:none;cursor:pointer;transition:background .15s,color .15s,border-color .15s,transform .12s;white-space:nowrap}
+.btn:hover{background:var(--hot-2)}
+.btn:active{transform:scale(.98)}
+.btn.o{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+.btn.o:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+section{padding:110px 0}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .25s,border-color .25s;border-bottom:1px solid transparent}
+header.s{background:rgba(12,11,10,.9);backdrop-filter:blur(12px);border-color:var(--line)}
+header .wrap{display:flex;align-items:center;gap:30px;height:68px}
+.logo{font:800 22px var(--d);text-decoration:none;letter-spacing:-.04em;display:flex;align-items:center;gap:8px}
+.logo i{width:10px;height:10px;background:var(--hot);border-radius:50%;box-shadow:0 0 14px var(--hot)}
+.logo small{font:500 11px var(--m);color:var(--mute);letter-spacing:.04em;margin-left:4px;text-transform:none}
+header nav{display:flex;gap:24px;font:500 14.5px var(--b);margin-left:auto}
+header nav a{text-decoration:none;color:#d8d1c6}
+header nav a:hover{color:#fff}
+.open{font:500 12px var(--m);color:var(--mute);display:flex;gap:8px;align-items:center;white-space:nowrap}
+.open i{width:7px;height:7px;border-radius:50%;background:#35c46a}
+.open.c i{background:#8a8279}
+.cartb{position:relative;height:42px;padding:0 16px;border:1.5px solid rgba(255,255,255,.3);background:none;color:#fff;font:600 14px var(--b);cursor:pointer;display:flex;gap:8px;align-items:center}
+.cartb:hover{border-color:#fff}
+.cartb b{min-width:22px;height:22px;border-radius:11px;background:var(--hot);display:grid;place-items:center;font:700 12px var(--b);padding:0 6px}
+.cartb b:empty{display:none}
+
+/* hero */
+.hero{position:relative;min-height:100svh;padding:0;display:flex;align-items:flex-end;overflow:hidden}
+.hero .ph{position:absolute;inset:-6% 0 0;background:url(img/hero.jpg) 62% 40%/cover no-repeat;will-change:transform}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(12,11,10,.92) 0%,rgba(12,11,10,.62) 42%,rgba(12,11,10,.12) 75%),linear-gradient(180deg,rgba(12,11,10,.55) 0%,transparent 28%,transparent 60%,var(--bg) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:120px;padding-bottom:56px}
+.hero h1{font-size:clamp(40px,7.4vw,110px);font-weight:800;max-width:12ch}
+.hero h1 em{font-style:normal;color:var(--hot)}
+.hero .lead{font-size:clamp(17px,1.5vw,20px);max-width:480px;color:#ddd5c9;margin:24px 0 28px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.h-facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:0;margin-top:44px;border-top:1px solid rgba(255,255,255,.18)}
+.h-facts div{padding:18px 44px 0 0;margin-right:44px;border-right:1px solid rgba(255,255,255,.18)}
+.h-facts div:last-child{border:0;margin:0}
+.h-facts b{display:block;font:700 clamp(20px,2.2vw,28px) var(--d);letter-spacing:-.03em}
+.h-facts span{font:500 12px var(--m);color:var(--mute)}
+
+.tick{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:16px 0;font:700 15px var(--d);text-transform:uppercase;letter-spacing:-.01em}
+.tick div{display:inline-block;animation:tk 36s linear infinite}
+.tick span{margin-right:44px}
+.tick span::after{content:"✳";color:var(--hot);margin-left:44px}
+@keyframes tk{to{transform:translateX(-50%)}}
+
+/* menu */
+.m-head{display:flex;justify-content:space-between;align-items:end;gap:28px;flex-wrap:wrap;margin-bottom:38px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{height:42px;padding:0 18px;border:1.5px solid var(--line);background:none;color:#cfc7bb;font:600 14px var(--b);cursor:pointer}
+.tabs button:hover{border-color:#6a625a}
+.tabs button.on{background:var(--tx);border-color:var(--tx);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--bg-2);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .2s,transform .25s}
+.card:hover{border-color:#5a524a;transform:translateY(-3px)}
+.card[hidden]{display:none}
+.card .im{aspect-ratio:9/7;overflow:hidden;position:relative}
+.card .im img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .im img{transform:scale(1.05)}
+.card .tag{position:absolute;left:12px;top:12px;background:var(--hot);color:#fff;font:500 11px var(--m);padding:4px 8px;text-transform:uppercase;letter-spacing:.04em}
+.card .bd{padding:18px 18px 16px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.card p{font-size:14.5px;color:var(--mute);margin:8px 0 18px}
+.card .ft{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.card .pr{font:700 21px var(--d);letter-spacing:-.03em}
+.card .pr small{font:500 12px var(--m);color:var(--mute);margin-left:8px;letter-spacing:0}
+.add{width:44px;height:44px;border:0;background:var(--hot);color:#fff;font:400 26px/1 var(--b);cursor:pointer;display:grid;place-items:center;transition:background .15s,transform .12s}
+.add:hover{background:var(--hot-2)}
+.add:active{transform:scale(.92)}
+.add.ok{background:#35c46a}
+
+/* beans */
+.beans{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lot{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;margin-top:44px}
+.lot .im{position:relative;aspect-ratio:4/3;overflow:hidden}
+.lot .im img{width:100%;height:100%;object-fit:cover}
+.lot .im span{position:absolute;left:14px;bottom:14px;background:rgba(12,11,10,.82);backdrop-filter:blur(6px);font:500 12px var(--m);padding:8px 12px}
+.lot .im span b{color:var(--hot-2);font-weight:500}
+.lot h3{font-size:clamp(26px,3.4vw,46px);font-weight:800}
+.lot .or{font:500 12.5px var(--m);color:var(--mute);margin:12px 0 18px}
+.notes{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
+.notes span{border:1px solid var(--line);padding:6px 12px;font-size:14px;color:#d8d1c6}
+.opt{margin-bottom:18px}
+.opt>span{display:block;font:500 12px var(--m);color:var(--mute);margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{height:44px;padding:0 16px;border:1.5px solid var(--line);background:none;color:#cfc7bb;font:600 14.5px var(--b);cursor:pointer}
+.seg button.on{border-color:var(--hot);color:#fff;background:rgba(255,59,31,.12)}
+.buy{display:flex;align-items:center;gap:22px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap}
+.buy .pr{font:800 clamp(30px,3.6vw,44px) var(--d);letter-spacing:-.04em;white-space:nowrap}
+.lots{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line)}
+.lots div{padding:24px 24px 0 0;border-right:1px solid var(--line);margin-right:24px}
+.lots div:last-child{border:0;margin:0}
+.lots small{font:500 12px var(--m);color:var(--mute)}
+.lots b{display:block;font:700 19px var(--d);text-transform:uppercase;letter-spacing:-.02em;margin:8px 0 6px}
+.lots p{font-size:14.5px;color:var(--mute)}
+.lots span{display:block;margin-top:12px;font:700 17px var(--d)}
+
+/* standards */
+.std{position:relative;overflow:hidden}
+.std::before{content:"";position:absolute;inset:0;background:url(img/roast.jpg) center/cover;opacity:.2}
+.std::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(12,11,10,.55) 45%,var(--bg) 100%)}
+.std .wrap{position:relative;z-index:1}
+.st-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border-top:1px solid rgba(255,255,255,.2)}
+.st-grid div{padding:26px 26px 0 0;border-right:1px solid rgba(255,255,255,.2);margin-right:26px}
+.st-grid div:last-child{border:0;margin:0}
+.st-grid i{font:800 clamp(44px,5vw,72px)/1 var(--d);font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--hot);display:block;margin-bottom:22px;letter-spacing:-.04em}
+.st-grid h3{font-size:19px;font-weight:700;margin-bottom:10px;letter-spacing:-.02em}
+.st-grid p{font-size:15px;color:#c9c1b6}
+
+/* place */
+.place{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:18px;margin-top:44px}
+.place .big{position:relative;min-height:460px;overflow:hidden}
+.place img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.place .big div{position:absolute;left:0;right:0;bottom:0;padding:26px;background:linear-gradient(0deg,rgba(12,11,10,.92),transparent)}
+.place .big b{font:800 clamp(22px,2.6vw,34px) var(--d);text-transform:uppercase;letter-spacing:-.03em;display:block}
+.place .big span{font:500 13px var(--m);color:#d8d1c6}
+.info{background:var(--bg-2);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column}
+.info dl{margin:0 0 24px}
+.info dt{font:500 12px var(--m);color:var(--mute);text-transform:uppercase;letter-spacing:.05em;padding-top:16px;border-top:1px solid var(--line);margin-top:16px}
+.info dt:first-child{border:0;margin:0;padding:0}
+.info dd{margin:6px 0 0;font-weight:600;font-size:18px}
+.info dd small{display:block;font-weight:400;font-size:14.5px;color:var(--mute)}
+.info .btn{margin-top:auto}
+.strip3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.strip3 div{aspect-ratio:4/3;overflow:hidden}
+.strip3 img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.strip3 div:hover img{transform:scale(1.05)}
+
+/* final */
+.final{border-top:1px solid var(--line);padding:90px 0 60px;overflow:hidden}
+.final h2{font-size:clamp(40px,11.2vw,164px);line-height:.9;color:#3a3531;white-space:nowrap}
+.final h2 em{font-style:normal;color:var(--hot)}
+.f-row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:44px;align-items:end}
+.f-row p{max-width:460px;color:#c9c1b6}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;font:500 12.5px var(--m);color:var(--mute)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 28px;flex-wrap:wrap}
+
+/* cart drawer */
+.shade{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.shade.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:80;width:min(420px,100%);background:var(--bg-2);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.dr-h{display:flex;justify-content:space-between;align-items:center;padding:22px 24px;border-bottom:1px solid var(--line)}
+.dr-h b{font:800 22px var(--d);text-transform:uppercase;letter-spacing:-.03em}
+.dr-h button{background:none;border:0;color:#fff;font-size:30px;line-height:1;cursor:pointer;padding:4px 8px}
+.dr-b{flex:1;overflow:auto;padding:8px 24px}
+.dr-b .emp{color:var(--mute);padding:28px 0}
+.it{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}
+.it b{font-weight:600;display:block}
+.it small{color:var(--mute);font-size:13.5px}
+.qty{display:flex;align-items:center;gap:10px;font:600 15px var(--b)}
+.qty button{width:30px;height:30px;border:1px solid var(--line);background:none;color:#fff;cursor:pointer;font-size:17px;line-height:1}
+.it .s{font:700 15px var(--d);white-space:nowrap}
+.dr-f{padding:22px 24px 26px;border-top:1px solid var(--line)}
+.dr-f .tot{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}
+.dr-f .tot b{font:800 28px var(--d);letter-spacing:-.03em}
+.dr-f .btn{width:100%}
+.dr-f small{display:block;color:var(--mute);font-size:13px;margin-top:12px}
+.demo{position:fixed;left:14px;bottom:14px;z-index:60;background:var(--tx);color:var(--bg);font:500 11.5px var(--m);padding:6px 10px}
+
+@media (max-width:1040px){
+  header nav{display:none}.open{margin-left:auto}
+  .grid{grid-template-columns:1fr 1fr}
+  .lot{grid-template-columns:1fr;gap:28px}
+  .st-grid{grid-template-columns:1fr 1fr}
+  .st-grid div{padding-bottom:26px}
+  .st-grid div:nth-child(2){border-right:0;margin-right:0}
+  .st-grid div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.2)}
+  .place{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  section{padding:68px 0}
+  header .wrap{height:60px;gap:12px}
+  .logo small,.open{display:none}
+  .cartb{margin-left:auto}
+  .hero .wrap{padding-bottom:36px}
+  .hero .ph{background-position:70% 40%}
+  .hero::before{background:linear-gradient(180deg,rgba(12,11,10,.6) 0%,rgba(12,11,10,.35) 35%,rgba(12,11,10,.9) 78%,var(--bg) 100%)}
+  .ctas .btn{flex:1 1 100%}
+  .h-facts{grid-template-columns:1fr 1fr 1fr;margin-top:40px;justify-content:stretch}
+  .h-facts div{padding:14px 10px 0 0;margin-right:10px}
+  .h-facts b{font-size:17px}.h-facts span{font-size:10.5px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card .bd{padding:12px 12px 12px}
+  .card h3{font-size:14.5px}
+  .card p{font-size:13px;margin:6px 0 12px}
+  .card .pr{font-size:16px}.card .pr small{display:block;margin:2px 0 0}
+  .add{width:38px;height:38px;font-size:22px}
+  .lots{grid-template-columns:1fr}
+  .lots div{border-right:0;margin:0;padding:20px 0;border-bottom:1px solid var(--line)}
+  .st-grid{grid-template-columns:1fr}
+  .st-grid div{border-right:0!important;margin:0!important;display:grid;grid-template-columns:86px 1fr;gap:0 8px;padding:22px 0;border-top:1px solid rgba(255,255,255,.2)}
+  .st-grid div:first-child{border-top:0}
+  .st-grid i{grid-row:span 2;margin:0;font-size:44px}
+  .place .big{min-height:320px}
+  .strip3{gap:8px}
+  .final{padding:60px 0 40px}
+  .demo{bottom:10px;left:10px}
+}
+</style>
+</head>
+<body>
+<a class="demo" href="../projects.html#case4" style="text-decoration:none">Демо-сайт AVEO · кофейня вымышленная · ← к кейсу</a>
+
+<header id="hd">
+  <div class="wrap">
+    <a class="logo" href="#top"><i></i>ЖАР<small>обжарка и кофейня</small></a>
+    <nav><a href="#menu">Меню</a><a href="#beans">Зерно</a><a href="#std">Стандарты</a><a href="#place">Кофейня</a></nav>
+    <span class="open" id="open"><i></i><span>Открыто до 22:00</span></span>
+    <button class="cartb" id="cartBtn">Заказ <b id="cnt"></b></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="ph" id="heroPh"></div>
+  <div class="wrap">
+    <p class="kick"><i></i>Собственная обжарка · каждый вторник и пятницу</p>
+    <h1>Зерно жарим <em>сами.</em> Варим при вас.</h1>
+    <p class="lead">Покупаем зелёное зерно у фермеров, обжариваем небольшими партиями и подаём, пока оно свежее. Без сиропов по умолчанию и без очереди на полчаса.</p>
+    <div class="ctas"><a class="btn" href="#menu">Смотреть меню</a><a class="btn o" href="#beans">Зерно домой и в офис</a></div>
+    <div class="h-facts">
+      <div><b>от 180 ₽</b><span>эспрессо</span></div>
+      <div><b>8:00–22:00</b><span>каждый день</span></div>
+      <div><b id="roastAgo">3 дня</b><span>назад обжарили зерно</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="tick" aria-hidden="true"><div>
+  <span>Колумбия Уила</span><span>Эфиопия Гуджи</span><span>Бразилия Серрадо</span><span>Эспрессо</span><span>Фильтр</span><span>Колд брю</span><span>Выпечка каждое утро</span>
+  <span>Колумбия Уила</span><span>Эфиопия Гуджи</span><span>Бразилия Серрадо</span><span>Эспрессо</span><span>Фильтр</span><span>Колд брю</span><span>Выпечка каждое утро</span>
+</div></div>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="m-head rv">
+      <div><p class="kick"><i></i>Меню</p><h2>Что налить?</h2></div>
+      <div class="tabs" id="tabs"><button class="on" data-f="all">Всё</button><button data-f="hot">Кофе</button><button data-f="cold">Холодное</button><button data-f="food">Выпечка</button></div>
+    </div>
+    <div class="grid" id="grid">
+      <article class="card rv" data-c="hot"><div class="im"><img src="img/espresso.jpg" alt="Эспрессо" loading="lazy"><span class="tag">Сорт недели</span></div><div class="bd"><h3>Эспрессо</h3><p>Колумбия Уила. Тёмный шоколад, красное яблоко, плотное тело.</p><div class="ft"><span class="pr">180 ₽<small>30 мл</small></span><button class="add" data-n="Эспрессо" data-p="180" aria-label="Добавить эспрессо">+</button></div></div></article>
+      <article class="card rv" data-c="hot"><div class="im"><img src="img/cappuccino.jpg" alt="Капучино" loading="lazy"></div><div class="bd"><h3>Капучино</h3><p>Двойной эспрессо и молоко, взбитое до плотной глянцевой пены.</p><div class="ft"><span class="pr">290 ₽<small>250 мл</small></span><button class="add" data-n="Капучино" data-p="290" aria-label="Добавить капучино">+</button></div></div></article>
+      <article class="card rv" data-c="hot"><div class="im"><img src="img/flat.jpg" alt="Флэт уайт" loading="lazy"></div><div class="bd"><h3>Флэт уайт</h3><p>Больше кофе, меньше молока. Для тех, кому капучино слишком мягкий.</p><div class="ft"><span class="pr">310 ₽<small>180 мл</small></span><button class="add" data-n="Флэт уайт" data-p="310" aria-label="Добавить флэт уайт">+</button></div></div></article>
+      <article class="card rv" data-c="hot"><div class="im"><img src="img/filter.jpg" alt="Фильтр-кофе" loading="lazy"><span class="tag">Вручную</span></div><div class="bd"><h3>Воронка V60</h3><p>Эфиопия Гуджи. Жасмин, персик, бергамот. Готовим четыре минуты.</p><div class="ft"><span class="pr">340 ₽<small>300 мл</small></span><button class="add" data-n="Воронка V60" data-p="340" aria-label="Добавить воронку">+</button></div></div></article>
+      <article class="card rv" data-c="cold"><div class="im"><img src="img/iced.jpg" alt="Айс-латте" loading="lazy"></div><div class="bd"><h3>Айс-латте</h3><p>Эспрессо, холодное молоко и крупный лёд, который не тает за минуту.</p><div class="ft"><span class="pr">320 ₽<small>350 мл</small></span><button class="add" data-n="Айс-латте" data-p="320" aria-label="Добавить айс-латте">+</button></div></div></article>
+      <article class="card rv" data-c="cold"><div class="im"><img src="img/coldbrew.jpg" alt="Колд брю" loading="lazy"></div><div class="bd"><h3>Колд брю</h3><p>Настаиваем 16 часов на холодной воде. Сладкий, без горечи.</p><div class="ft"><span class="pr">300 ₽<small>300 мл</small></span><button class="add" data-n="Колд брю" data-p="300" aria-label="Добавить колд брю">+</button></div></div></article>
+      <article class="card rv" data-c="food"><div class="im"><img src="img/croissant.jpg" alt="Круассан" loading="lazy"><span class="tag">С 8 утра</span></div><div class="bd"><h3>Круассан на масле</h3><p>Печём каждое утро. К одиннадцати обычно заканчиваются.</p><div class="ft"><span class="pr">220 ₽<small>90 г</small></span><button class="add" data-n="Круассан на масле" data-p="220" aria-label="Добавить круассан">+</button></div></div></article>
+      <article class="card rv" data-c="food"><div class="im"><img src="img/cheesecake.jpg" alt="Чизкейк" loading="lazy"></div><div class="bd"><h3>Баскский чизкейк</h3><p>Подгоревшая корочка, кремовая середина. Режем при вас.</p><div class="ft"><span class="pr">390 ₽<small>130 г</small></span><button class="add" data-n="Баскский чизкейк" data-p="390" aria-label="Добавить чизкейк">+</button></div></div></article>
+      <article class="card rv" data-c="food"><div class="im"><img src="img/choco.jpg" alt="Шоколадный торт" loading="lazy"></div><div class="bd"><h3>Шоколадный торт</h3><p>Тёмный шоколад 70% и щепотка морской соли.</p><div class="ft"><span class="pr">360 ₽<small>120 г</small></span><button class="add" data-n="Шоколадный торт" data-p="360" aria-label="Добавить торт">+</button></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="beans" id="beans">
+  <div class="wrap">
+    <p class="kick rv"><i></i>Зерно</p>
+    <h2 class="rv">Для дома и офиса</h2>
+    <div class="lot">
+      <div class="im rv"><img src="img/beans.jpg" alt="Кофе в зёрнах" loading="lazy"><span>обжарено <b id="roastDate">—</b></span></div>
+      <div class="rv">
+        <h3>Колумбия Уила</h3>
+        <p class="or">Ферма Эль-Параисо · 1 750 м · мытая обработка · оценка 86</p>
+        <p>Универсальный лот: одинаково хорош в эспрессо и в фильтре. На нём мы варим весь кофе в кофейне на этой неделе.</p>
+        <div class="notes"><span>тёмный шоколад</span><span>красное яблоко</span><span>карамель</span></div>
+        <div class="opt"><span>Вес</span><div class="seg" data-k="w"><button class="on" data-v="250">250 г</button><button data-v="1000">1 кг</button></div></div>
+        <div class="opt"><span>Помол</span><div class="seg" data-k="g"><button class="on" data-v="в зёрнах">В зёрнах</button><button data-v="под эспрессо">Эспрессо</button><button data-v="под фильтр">Фильтр</button><button data-v="под турку">Турка</button></div></div>
+        <div class="buy"><span class="pr" id="lotPrice">890 ₽</span><button class="btn" id="lotAdd">Добавить в заказ</button></div>
+      </div>
+    </div>
+    <div class="lots rv">
+      <div><small>для фильтра</small><b>Эфиопия Гуджи</b><p>Жасмин, персик, бергамот. Светлая обжарка.</p><span>от 990 ₽</span></div>
+      <div><small>для эспрессо</small><b>Бразилия Серрадо</b><p>Орех, молочный шоколад, низкая кислотность.</p><span>от 750 ₽</span></div>
+      <div><small>в офис</small><b>Подписка от 2 кг</b><p>Привозим свежую обжарку раз в две недели.</p><span>−15% от цены</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="std" id="std">
+  <div class="wrap">
+    <p class="kick rv"><i></i>Стандарты</p>
+    <h2 class="rv">Четыре правила<br>чашки</h2>
+    <div class="st-grid">
+      <div class="rv"><i>01</i><h3>Зерно не старше месяца</h3><p>На каждой пачке и на доске у бара написана дата обжарки. Старше 30 дней не продаём.</p></div>
+      <div class="rv"><i>02</i><h3>Вода под рецепт</h3><p>Фильтруем и доводим минерализацию до 120 мг/л, иначе вкус плывёт.</p></div>
+      <div class="rv"><i>03</i><h3>Весы на каждой чашке</h3><p>18 г кофе, 36 г эспрессо, 27 секунд. Бариста сверяет рецепт каждое утро.</p></div>
+      <div class="rv"><i>04</i><h3>Не понравилось, переделаем</h3><p>Если напиток не тот, скажите бариста. Сварим заново без вопросов.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="place" style="padding-top:0">
+  <div class="wrap">
+    <p class="kick rv"><i></i>Кофейня</p>
+    <h2 class="rv">Заходите</h2>
+    <div class="place">
+      <div class="big rv"><img src="img/bar.jpg" alt="Барная стойка кофейни" loading="lazy"><div><b>Бар на 12 мест</b><span>розетки у каждого места · можно с ноутбуком и с собакой</span></div></div>
+      <div class="info rv">
+        <dl>
+          <dt>Адрес</dt><dd>ул. Примерная, 12<small>вход со двора, вывеска с красной точкой</small></dd>
+          <dt>Часы</dt><dd>Каждый день, 8:00–22:00<small>выпечка с 8:00, обжарка по вторникам и пятницам</small></dd>
+          <dt>Телефон</dt><dd>+7 (000) 000-00-00</dd>
+        </dl>
+        <a class="btn" href="#top" id="routeBtn">Построить маршрут</a>
+      </div>
+    </div>
+    <div class="strip3">
+      <div class="rv"><img src="img/barista.jpg" alt="Бариста готовит эспрессо" loading="lazy"></div>
+      <div class="rv"><img src="img/scoop.jpg" alt="Свежеобжаренное зерно" loading="lazy"></div>
+      <div class="rv"><img src="img/night.jpg" alt="Кофейня вечером" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 aria-label="Кофе ждёт">Кофе <em>ждёт</em></h2>
+    <div class="f-row"><p>Соберите заказ на сайте и заберите без очереди. Приготовим к вашему приходу.</p><a class="btn" href="#menu">Собрать заказ</a></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>ЖАР · обжарка и кофейня</span><span>Демо-сайт: кофейня, адрес и цены вымышлены</span><span>Сделано AVEO · Даниил Сергеев</span></div></footer>
+
+<div class="shade" id="shade"></div>
+<aside class="drawer" id="drawer" aria-label="Ваш заказ">
+  <div class="dr-h"><b>Ваш заказ</b><button id="drX" aria-label="Закрыть">×</button></div>
+  <div class="dr-b" id="drB"></div>
+  <div class="dr-f"><div class="tot"><span>Итого</span><b id="tot">0 ₽</b></div><button class="btn" id="order">Оформить предзаказ</button><small id="drNote">Заберёте в кофейне, оплата на месте.</small></div>
+</aside>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  const rub = n => n.toLocaleString('ru-RU').replace(/ /g, ' ') + ' ₽';
+
+  // header + hero parallax
+  const hd = $('#hd'), ph = $('#heroPh');
+  const onS = () => { hd.classList.toggle('s', scrollY > 40); if (scrollY < innerHeight) ph.style.transform = `translateY(${scrollY * .18}px)` };
+  addEventListener('scroll', onS, {passive: true}); onS();
+
+  // open / closed by the visitor's clock
+  const h = new Date().getHours(), op = $('#open');
+  if (h >= 8 && h < 22) op.lastElementChild.textContent = 'Открыто до 22:00';
+  else { op.classList.add('c'); op.lastElementChild.textContent = 'Закрыто, откроемся в 8:00' }
+
+  // last roast day: Tuesday or Friday
+  const d = new Date(); d.setHours(0, 0, 0, 0); let ago = 0;
+  while (![2, 5].includes(d.getDay())) { d.setDate(d.getDate() - 1); ago++ }
+  $('#roastDate').textContent = d.toLocaleDateString('ru-RU', {day: 'numeric', month: 'long'});
+  const pl = n => n % 10 === 1 && n % 100 !== 11 ? 'день' : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100) ? 'дня' : 'дней';
+  $('#roastAgo').textContent = ago === 0 ? 'сегодня' : ago + ' ' + pl(ago);
+  if (ago === 0) $('#roastAgo').nextElementSibling.textContent = 'обжарили зерно';
+
+  // menu filter
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+    $$('#tabs button').forEach(x => x.classList.toggle('on', x === b));
+    $$('#grid .card').forEach(c => { c.hidden = b.dataset.f !== 'all' && c.dataset.c !== b.dataset.f; c.classList.add('in') }) });
+
+  // cart
+  const cart = new Map();
+  function draw() {
+    let n = 0, sum = 0, html = '';
+    cart.forEach((v, k) => { n += v.q; sum += v.q * v.p;
+      html += `<div class="it"><div><b>${k}</b><small>${rub(v.p)}</small></div><div class="qty"><button data-d="-1" data-k="${k}" aria-label="Меньше">−</button>${v.q}<button data-d="1" data-k="${k}" aria-label="Больше">+</button></div><span class="s">${rub(v.q * v.p)}</span></div>` });
+    $('#drB').innerHTML = html || '<p class="emp">Пока пусто. Добавьте что-нибудь из меню.</p>';
+    $('#cnt').textContent = n || ''; $('#tot').textContent = rub(sum);
+    $('#order').disabled = !n; $('#order').style.opacity = n ? 1 : .45;
+  }
+  function add(name, price) { const it = cart.get(name) || {q: 0, p: price}; it.q++; cart.set(name, it); draw() }
+  function drawer(on) { $('#drawer').classList.toggle('on', on); $('#shade').classList.toggle('on', on); document.body.style.overflow = on ? 'hidden' : '' }
+  $('#grid').addEventListener('click', e => { const b = e.target.closest('.add'); if (!b) return; add(b.dataset.n, +b.dataset.p);
+    b.classList.add('ok'); b.textContent = '✓'; setTimeout(() => { b.classList.remove('ok'); b.textContent = '+' }, 900) });
+  $('#drB').addEventListener('click', e => { const b = e.target.closest('[data-d]'); if (!b) return; const it = cart.get(b.dataset.k); it.q += +b.dataset.d; if (it.q <= 0) cart.delete(b.dataset.k); draw() });
+  $('#cartBtn').onclick = () => { $('#drNote').textContent = 'Заберёте в кофейне, оплата на месте.'; drawer(true) };
+  $('#drX').onclick = $('#shade').onclick = () => drawer(false);
+  addEventListener('keydown', e => { if (e.key === 'Escape') drawer(false) });
+  $('#order').onclick = () => { $('#drNote').textContent = 'Это демо-сайт: заказ никуда не отправляется. На настоящем сайте здесь будет оплата или заявка в Telegram.' };
+  draw();
+
+  // beans configurator
+  const lot = {w: '250', g: 'в зёрнах'}, LP = {250: 890, 1000: 2990};
+  $$('.seg').forEach(s => s.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+    s.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); lot[s.dataset.k] = b.dataset.v; $('#lotPrice').textContent = rub(LP[lot.w]) }));
+  $('#lotAdd').onclick = () => { add(`Колумбия Уила, ${lot.w === '250' ? '250 г' : '1 кг'}, ${lot.g}`, LP[lot.w]); drawer(true) };
+  $('#routeBtn').onclick = e => { e.preventDefault(); alert('Демо-сайт: адрес вымышленный. На настоящем сайте кнопка откроет маршрут в Яндекс Картах.') };
+
+  // reveal
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) } }), {threshold: .1}) : null;
+  $$('.rv').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+})();
+</script>
+</body>
+</html>
